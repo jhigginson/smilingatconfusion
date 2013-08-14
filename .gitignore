@@ -15,4 +15,6 @@
 /log/*.log
 /tmp
 
-/config/initializers/omniauth.db
+/config/initializers/omniauth.rb
+
+/config/initializers/secret_token.rb
