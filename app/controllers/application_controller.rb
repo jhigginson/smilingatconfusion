@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def require_signin!
-    if !defined? current_user
+    if !current_user
       flash[:alert] = "You must sign in first."
-      redirect_to :signin
+      redirect_to :root
     end
   end
 

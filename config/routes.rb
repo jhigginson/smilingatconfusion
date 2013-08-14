@@ -2,6 +2,10 @@ Smilingatconfusion::Application.routes.draw do
 
   root to: "tabs#index"
 
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
   get "/signin", to: "sessions#new"
   post "/signin", to: "sessions#create"
 
