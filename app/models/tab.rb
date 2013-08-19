@@ -1,4 +1,5 @@
 class Tab < ActiveRecord::Base
+  acts_as_commentable
   belongs_to :album
   belongs_to :artist
   belongs_to :tuning

@@ -1,4 +1,4 @@
-class TabsController < ApplicationController
+  class TabsController < ApplicationController
   before_action :require_signin!, except: [:show, :index]
   before_action :set_tab, only: [:show, :edit, :update, :destroy]
 
@@ -24,12 +24,16 @@ class TabsController < ApplicationController
   end
 
   def show
+    @tab = Tab.find_by_id params[:id]
+    @comment = @tab.comments.new
+    @comments = @tab.comments.load
   end
 
   def edit
   end
 
   def update
+    @tab.user = current_user
     if @tab.update(tab_params)
       flash[:notice] = "Tab has been updated."
       redirect_to @tab

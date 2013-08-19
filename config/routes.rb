@@ -9,7 +9,9 @@ Smilingatconfusion::Application.routes.draw do
   get "/signin", to: "sessions#new"
   post "/signin", to: "sessions#create"
 
-  resources :tabs
+  resources :tabs do
+    resources :comments
+  end
   resources :artists
   resources :tunings
   resources :albums
