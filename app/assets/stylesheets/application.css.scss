@@ -38,8 +38,8 @@ div.new_form_div {
   position: absolute;
   width: 300px;
   padding: 10px;
-  background: #eeeeee;
-  color: #000000;
+  background: $bodyBackground;
+  color: $textColor;
   border: 1px solid #1a1a1a;
   font-size: 90%;
 }
