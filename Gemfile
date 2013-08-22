@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'simple_form'
 
 gem 'bootstrap-sass'
+gem 'bootswatch-rails'
 
 gem 'acts_as_commentable'
 

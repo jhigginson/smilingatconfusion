@@ -12,6 +12,23 @@
  *= require_tree .
  */
 
+// Example using 'Cerulean' bootswatch
+//
+// First import journal variables
+@import "bootswatch/superhero/variables";
+
+// Then bootstrap itself
+@import "bootstrap";
+
+// Bootstrap body padding for fixed navbar
+body { padding-top: 60px; }
+
+// Responsive styles go here in case you want them
+@import "bootstrap-responsive";
+
+// And finally bootswatch style itself
+@import "bootswatch/superhero/bootswatch";
+
 a.close-div{
   float: right;
 }
@@ -28,7 +45,7 @@ div.new_form_div {
 }
 
 textarea.wide_text_area{
-  width: 100%;
+  width: 66%;
 }
 
 .tab_body{

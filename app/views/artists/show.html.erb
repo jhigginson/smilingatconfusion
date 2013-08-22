@@ -1,10 +1,8 @@
 <h2><%= @artist.name %></h2>
 <ul>
-<% @artist.albums.each do |album| %>
+<% @artist.tabs.each do |tab| %>
     <li>
-      <%= link_to album.name album %>
+      <%= link_to tab.title, tab %>
     </li>
 <% end %>
 </ul>
-
-<%= link_to "New Album", new_album_path %>

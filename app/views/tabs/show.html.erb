@@ -5,21 +5,22 @@
 <p><%= @tab.tuning.display %></p>
 <p><%= @tab.notes %></p>
 <span class="tab_body"><%= @tab.body %></span>
-<br/>
-<br/>
-<%= simple_form_for [@tab, @comment] do |f| %>
-  <%= f.input :comment %>
-  <%= f.button :submit, "Add Comment" %>
-<% end %>
 
 <div class="comments">
   <h4>Comments</h4>
-  <ul>
-  <% @comments.each do |c| %>
-    <li>
-      <span class="comment_header"><%= c.user.name if c.user %> on <%= l c.created_at if c.created_at %> </span>
-      <%= c.comment %>
-    </li>
-  <% end %>
-  </ul>
+
+  <table class="table table-striped">
+    <% @comments.each do |comment| %>
+      <tr>
+        <td> <%= comment.comment %></td>
+        <td> <%=comment.user.name if comment.user %> </td>
+        <td> <%=comment.created_at.strftime("%B %d %I:%M %p") if comment.created_at %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
+
+<%= simple_form_for [@tab, @comment] do |f| %>
+  <%= f.input :comment, input_html: { rows: 5, class: 'wide_text_area' }%>
+  <%= f.button :submit, "Add Comment", class: 'btn-primary' %>
+<% end %>
