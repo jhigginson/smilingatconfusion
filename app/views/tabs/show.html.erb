@@ -20,7 +20,9 @@
   </table>
 </div>
 
-<%= simple_form_for [@tab, @comment] do |f| %>
-  <%= f.input :comment, input_html: { rows: 5, class: 'wide_text_area' }%>
-  <%= f.button :submit, "Add Comment", class: 'btn-primary' %>
+<% if current_user && current_user.has_role?(:comments, :new) %>
+  <%= simple_form_for [@tab, @comment] do |f| %>
+    <%= f.input :comment, input_html: { rows: 5, class: 'wide_text_area' }%>
+    <%= f.button :submit, "Add Comment", class: 'btn-primary' %>
+  <% end %>
 <% end %>

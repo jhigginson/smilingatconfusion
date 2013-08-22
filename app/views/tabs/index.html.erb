@@ -18,20 +18,29 @@
         <td><%= tab.tuning.notes %></td>
         <td><%= tab.user.name %></td>
         <td><%= tab.updated_at.strftime("%B %d %I:%M %p") %></td>
-        <td><%= link_to(edit_tab_path(tab), class: 'btn btn-mini') do %>
-              <i class="icon-edit"></i>
+        <% if current_user %>
+          <td>
+            <% if current_user.has_role?(:tabs, :edit) %>
+              <%= link_to(edit_tab_path(tab), class: 'btn btn-mini') do %>
+                  <i class="icon-edit"></i>
+              <% end %>
             <% end %>
-        <%= link_to tab_path(tab),
-              method: :delete,
-              data: { confirm: "Are you sure you want to delete this tab?"
-                    }, class: 'btn btn-danger btn-mini'  do %>
-          <i class="icon-remove"></i>
+            <% if current_user.has_role?(:tabs, :delete) %>
+              <%= link_to tab_path(tab),
+                  method: :delete,
+                  data: { confirm: "Are you sure you want to delete this tab?"
+                        }, class: 'btn btn-danger btn-mini'  do %>
+                <i class="icon-remove"></i>
+              <% end %>
+            <% end %>
+          </td>
         <% end %>
-                  </td>
       </tr>
     <% end %>
 
   </tbody>
 </table>
 
-<%= link_to "New Tab", new_tab_path, class: 'btn btn-primary' %>
+<% if current_user && current_user.has_role?(:tabs, :new) %>
+  <%= link_to "New Tab", new_tab_path, class: 'btn btn-primary' %>
+<% end %>

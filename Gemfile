@@ -36,6 +36,10 @@ gem 'acts_as_commentable'
 
 gem 'figaro'
 
+gem 'the_role', "~> 2.0.0"
+
+gem 'faker'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

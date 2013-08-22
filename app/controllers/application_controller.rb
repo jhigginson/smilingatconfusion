@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
+  include TheRoleController
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  def access_denied
+    return sender(text: 'access_denied: requires a role')
+  end
 
   def require_signin!
     if !current_user
@@ -15,4 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  alias_method :login_required, :require_signin!
+  alias_method :role_access_denied, :access_denied
 end

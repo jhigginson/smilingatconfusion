@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
+  include TheRoleUserModel
   has_many :tabs
-
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
   end
@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
       user.avatar = auth["info"]["image"]
     end
   end
+
 end

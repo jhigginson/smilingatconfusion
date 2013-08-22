@@ -1,6 +1,9 @@
   class TabsController < ApplicationController
-  before_action :require_signin!, except: [:show, :index]
+  before_action :login_required, except: [:show, :index]
+  before_action :role_required,  except: [:show, :index]
+
   before_action :set_tab, only: [:show, :edit, :update, :destroy]
+  before_action :owner_required, only: [:edit, :update, :destroy]
 
   def index
     @tabs = Tab.all
@@ -59,6 +62,7 @@
 
     def set_tab
       @tab = Tab.find(params[:id])
+      @owner_check_object = @tab
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "The tab you were looking for could not be found."
       redirect_to tabs_path

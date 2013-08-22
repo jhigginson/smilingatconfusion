@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :login_required
+  before_action :role_required
 
   def create
     @tab = Tab.find_by_id params[:tab_id]
