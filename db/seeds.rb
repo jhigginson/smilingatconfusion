@@ -24,7 +24,8 @@ doubledropd.update(notes: "DADGBD")
 weird_tuning = Tuning.find_or_create_by_name("Clementine Tuning")
 weird_tuning.update(notes: "CGCEAD")
 
-user = User.find_or_create_by_name("fakeuser")
+user = User.new(name: "johnmhigginson", email: nil, password_digest: nil, created_at: "2013-08-23 01:02:41", updated_at: "2013-08-23 01:02:41", uid: "24829405", provider: "twitter", avatar: "http://a0.twimg.com/profile_images/2371565377/e1san...", role_id: 1)
+user.save
 
 clementine = Tab.new(title: "Clementine",
                                 notes: "Make sure to listen to get the strumming right",
@@ -130,7 +131,7 @@ C--5--------------5--0-------------0--
       dreadful sorry,        clementine},
       tuning_id: Tuning.find_by_name('Clementine Tuning').id,
       artist_id: Artist.find_by_name('Elliott Smith').id,
-      user_id: User.find_by_name('fakeuser').id )
+      user_id: User.find_by_name('johnmhigginson').id )
 clementine.save
 
 
