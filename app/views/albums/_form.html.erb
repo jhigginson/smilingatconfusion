@@ -1,0 +1,9 @@
+<div class="new_form_div" id="new_album_form_div">
+  <%= link_to "", class: 'close-div' do %>
+    <i class="icon-remove"></i>
+  <% end %>
+  <%= simple_form_for @album, remote: true, id: :new_album do |f| %>
+    <%= f.input :name %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

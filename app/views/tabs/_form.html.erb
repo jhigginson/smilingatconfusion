@@ -6,7 +6,12 @@
   <% end %>
   <br />
   <br />
-  <%= f.association :album %>
+  *<%= f.association :album %>
+  <%= link_to new_album_path, remote: true, class: "btn btn-info",id: :add_album_link do%>
+    <i class="icon-plus"></i>
+  <% end %>
+  <br />
+  <br />
   <%= f.association :tuning, label_method: :display, include_blank:false%>
   <%= link_to new_tuning_path, remote: true, class: "btn btn-info",id: :add_tuning_link do%>
     <i class="icon-plus"></i>

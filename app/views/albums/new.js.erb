@@ -1,0 +1,5 @@
+$('#add_album_link').hide().parent("form").after('<%= j render("form") %>')
+$('#add_album_link').click(
+  $('#new_album_form_div').show()
+    .css($('#tab_album_id').offset())
+)

@@ -14,7 +14,7 @@
       <tr>
         <td><%= link_to tab.title, tab %></td>
         <td><%= link_to tab.artist.name, tab.artist %></td>
-        <td><%= tab.album.name %></td>
+        <td><%= tab.album.name if tab.album %></td>
         <td><%= tab.tuning.notes %></td>
         <td><%= tab.user.name %></td>
         <td><%= tab.updated_at.strftime("%B %d %I:%M %p") %></td>

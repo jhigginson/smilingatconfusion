@@ -1,0 +1,4 @@
+$('#new_album_form_div').remove();
+$('#add_album_link').show();
+$('#tab_album_id').append('<option value="<%= @album.id %>"><%= @album.name %></option>')
+$('#tab_album_id').val('<%= @album.id %>')

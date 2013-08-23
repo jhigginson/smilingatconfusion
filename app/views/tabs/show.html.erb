@@ -1,7 +1,7 @@
 <h2><%= @tab.title %></h2>
 <h3><%= @tab.artist.name %></h3>
 <span id='submitter'>Last update by <%= @tab.user.name %></span>
-<p>Album: <%= @tab.album.name %></p>
+<p>Album: <%= @tab.album.name if @tab.album %></p>
 <p><%= @tab.tuning.display %></p>
 <p><%= @tab.notes %></p>
 <span class="tab_body"><%= @tab.body %></span>
@@ -11,10 +11,21 @@
 
   <table class="table table-striped">
     <% @comments.each do |comment| %>
+      <% next if comment.comment == nil %>
       <tr>
         <td> <%= comment.comment %></td>
         <td> <%=comment.user.name if comment.user %> </td>
         <td> <%=comment.created_at.strftime("%B %d %I:%M %p") if comment.created_at %></td>
+        <% if current_user && (current_user.has_role?(:comments, :destroy) || comment.user == current_user) %>
+          <td>
+          <%= link_to [@tab, comment],
+              method: :delete,
+              data: { confirm: "Are you sure you want to delete this comment?"
+                    }, class: 'btn btn-danger btn-mini'  do %>
+            <i class="icon-remove"></i>
+          <% end %>
+        </td>
+        <% end %>
       </tr>
     <% end %>
   </table>

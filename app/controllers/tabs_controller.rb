@@ -27,7 +27,6 @@
   end
 
   def show
-    @tab = Tab.find_by_id params[:id]
     @comment = @tab.comments.new
     @comments = @tab.comments.load
   end
